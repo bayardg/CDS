@@ -1,0 +1,186 @@
+---
+title: "ProjetFilé"
+author: "Guillaume"
+date: "6 avril 2017"
+output: html_document
+---
+
+```{r}
+cds = read.table("C:/Users/Guillaume/Desktop/ProjetFile/base_projetfil2017.csv",sep=";",dec=",",header=TRUE,stringsAsFactors=FALSE)
+```
+
+```{r}
+#head(cds)
+```
+
+
+```{r,echo=FALSE}
+cds$Fitch[cds$Fitch=="AAA"]<-19
+cds$Fitch[cds$Fitch=="AA+"]<-18
+cds$Fitch[cds$Fitch=="AA"]<-17
+cds$Fitch[cds$Fitch=="AA-"]<-16
+cds$Fitch[cds$Fitch=="A+"]<-15
+cds$Fitch[cds$Fitch=="A"]<-14
+cds$Fitch[cds$Fitch=="A-"]<-13
+cds$Fitch[cds$Fitch=="BBB+"]<-12
+cds$Fitch[cds$Fitch=="BBB"]<-11
+cds$Fitch[cds$Fitch=="BBB-"]<-10
+cds$Fitch[cds$Fitch=="BB+"]<-9
+cds$Fitch[cds$Fitch=="BB"]<-8
+cds$Fitch[cds$Fitch=="BB-"]<-7
+cds$Fitch[cds$Fitch=="B+"]<-6
+cds$Fitch[cds$Fitch=="B"]<-5
+cds$Fitch[cds$Fitch=="B-"]<-4
+cds$Fitch[cds$Fitch=="CCC"]<-3
+cds$Fitch[cds$Fitch=="CC"]<-2
+cds$Fitch[cds$Fitch=="C"]<-2
+cds$Fitch[cds$Fitch=="RD"]<-1
+cds$Fitch[cds$Fitch=="D"]<-1
+cds$SP[cds$SP=="AAA"]<-19
+cds$SP[cds$SP=="AA+"]<-18
+cds$SP[cds$SP=="AA"]<-17
+cds$SP[cds$SP=="AA-"]<-16
+cds$SP[cds$SP=="A+"]<-15
+cds$SP[cds$SP=="A"]<-14
+cds$SP[cds$SP=="A-"]<-13
+cds$SP[cds$SP=="BBB+"]<-12
+cds$SP[cds$SP=="BBB"]<-11
+cds$SP[cds$SP=="BBB-"]<-10
+cds$SP[cds$SP=="BB+"]<-9
+cds$SP[cds$SP=="BB"]<-8
+cds$SP[cds$SP=="BB-"]<-7
+cds$SP[cds$SP=="B+"]<-6
+cds$SP[cds$SP=="B"]<-5
+cds$SP[cds$SP=="B-"]<-4
+cds$SP[cds$SP=="CCC+"]<-3
+cds$SP[cds$SP=="CCC"]<-3
+cds$SP[cds$SP=="CCC-"]<-3
+cds$SP[cds$SP=="CC"]<-2
+cds$SP[cds$SP=="C"]<-2
+cds$SP[cds$SP=="SD"]<-1
+cds$SP[cds$SP=="D"]<-1
+cds$Moodys[cds$Moodys=="Aaa"]<-19
+cds$Moodys[cds$Moodys=="Aa1"]<-18
+cds$Moodys[cds$Moodys=="Aa2"]<-17
+cds$Moodys[cds$Moodys=="Aa3"]<-16
+cds$Moodys[cds$Moodys=="A1"]<-15
+cds$Moodys[cds$Moodys=="A2"]<-14
+cds$Moodys[cds$Moodys=="A3"]<-13
+cds$Moodys[cds$Moodys=="Baa1"]<-12
+cds$Moodys[cds$Moodys=="Baa2"]<-11
+cds$Moodys[cds$Moodys=="Baa3"]<-10
+cds$Moodys[cds$Moodys=="Ba1"]<-9
+cds$Moodys[cds$Moodys=="Ba2"]<-8
+cds$Moodys[cds$Moodys=="Ba3"]<-7
+cds$Moodys[cds$Moodys=="B1"]<-6
+cds$Moodys[cds$Moodys=="B2"]<-5
+cds$Moodys[cds$Moodys=="B3"]<-4
+cds$Moodys[cds$Moodys=="Caa1"]<-3
+cds$Moodys[cds$Moodys=="Caa2"]<-3
+cds$Moodys[cds$Moodys=="Caa3"]<-3
+cds$Moodys[cds$Moodys=="Ca"]<-2
+cds$Moodys[cds$Moodys=="C"]<-1
+cds2<-cds[order(cds$pays),]
+#head(cds)
+#head(cds2)
+#as.numeric(as.character(cds2$CDS1Y)),as.numeric(as.character(cds2$CDS5Y)),as.numeric(as.character(cds2$CDS10Y)),as.numeric(as.character(cds2$Fitch)),as.numeric(as.character(cds2$Moodys)),as.numeric(as.character(cds2$SP))
+#c1<-as.numeric(as.character(cds2$CDS5Y))
+#c2<-as.numeric(as.character(cds2$CDS1Y))
+#c3<-as.numeric(as.character(cds2$CDS10Y))
+#c4<-as.numeric(as.character(cds2$Fitch))
+#c5<-as.numeric(as.character(cds2$Moodys))
+#c6<-as.numeric(as.character(cds2$SP))
+#cds3<-cbind.data.frame(cds2$pays,cds2$date,cds2$noms_pays,c1,c2,c3,c4,c5,c6,cds2$WorldCDSMoy)
+cds2$moyenneNotes=NA
+cds2$NotesDecalees=NA
+cds2$CdsDecales=NA
+cds2[,4:24]<-sapply(cds2[,4:24],as.numeric)
+# X[,2:3] <- sapply(X[,2:3],as.numeric) 
+#cds3<-as.numeric(cds3)
+#names(cds3)=c(names(cds2)[1:9],"moyenneCds","moyenneNotes","NotesDecalees","cdsDecales","WorldCDSMoy")
+#head(cds2)
+```
+```{r}
+for (i in 1:nrow(cds2)){
+  x<-c(cds2$Fitch[i],cds2$SP[i],cds2$Moodys[i])
+  cds2$moyenneNotes[i]=mean(x,na.rm=TRUE)
+}
+head(cds2)
+```
+
+```{r,echo=FALSE}
+for (i in 2:nrow(cds2)){
+  if (cds2$noms_pays[i]==cds2$noms_pays[i-1]){
+  cds2$NotesDecalees[i]=cds2$moyenneNotes[i-1]
+  cds2$CdsDecales[i]=cds2$WorldCDSMoy[i-1]
+  }
+}
+head(cds2)
+#moyenneNotes<-means(cds$Moodys,cds$SP,cds$Fitch)
+#moyenneCds<-means(cds$CDS1Y,cds$CDS5Y,cds$CDS10Y)
+#cds3<-c(cds,moyenneNotes,moyenneCds)
+#cds3
+```
+#Regression 1
+```{r}
+model=lm(CDSMoyen~NotesDecalees, data=cds2)
+summary(model)
+modelbis=lm(log(CDSMoyen)~NotesDecalees, data=cds2)
+summary(modelbis)
+#head(cds3)
+```
+#Regression 2
+```{r}
+model2=lm(CDSMoyen~NotesDecalees+CdsDecales, data=cds2)
+summary(model2)
+model2bis=lm(log(CDSMoyen)~NotesDecalees+CdsDecales, data=cds2)
+summary(model2bis)
+```
+```{r}
+#model2bis=lm(log(moyenneCds)~NotesDecalees+cdsDecales, data=cds3,na.exclude)
+#summary(model2bis)
+```
+#Regression 3
+```{r}
+model3=lm(CDSMoyenAn~PIB+Deasaster2, data=cds2)
+summary(model3)
+model3bis=lm(log(CDSMoyenAn)~PIB+Deasaster2, data=cds2)
+summary(model3bis)
+```
+#Regression 4
+```{r}
+model4=lm(CDSMoyenAn~PIB+Deasaster2+PoliticStabAbsViolence, data=cds2)
+summary(model4)
+model4bis=lm(log(CDSMoyenAn)~PIB+Deasaster2+PoliticStabAbsViolence, data=cds2)
+summary(model4bis)
+```
+#Regression 5
+```{r}
+model5=lm(CDSMoyenAn~PIB+Deasaster2+PoliticStabAbsViolence+IBM, data=cds2)
+summary(model5)
+model5bis=lm(log(CDSMoyenAn)~PIB+Deasaster2+PoliticStabAbsViolence+IBM, data=cds2)
+summary(model5bis)
+```
+#Regression 3bis
+```{r}
+model3=lm(CDSMoyenAn~DesPerPib+Deasaster2, data=cds2)
+summary(model3)
+model3bis=lm(log(CDSMoyenAn)~DesPerPib+Deasaster2, data=cds2)
+summary(model3bis)
+```
+#Regression 4bis
+```{r}
+model4=lm(CDSMoyenAn~DesPerPib+Deasaster2+PoliticStabAbsViolence, data=cds2)
+summary(model4)
+model4bis=lm(log(CDSMoyenAn)~DesPerPib+Deasaster2+PoliticStabAbsViolence, data=cds2)
+summary(model4bis)
+```
+#Regression 5bis
+```{r}
+model5=lm(CDSMoyenAn~DesPerPib+Deasaster2+PoliticStabAbsViolence+IBM, data=cds2)
+summary(model5)
+model5bis=lm(log(CDSMoyenAn)~DesPerPib+Deasaster2+PoliticStabAbsViolence+IBM, data=cds2)
+summary(model5bis)
+```
+
+

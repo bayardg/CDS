@@ -1,0 +1,13 @@
+build-cds2-Desktop-Debug/openfile8.sh
+build-cds2-Desktop-Debug/openfile9.sh
+cds2/fenetre.cpp
+cds2/fenetre.h
+cds2/main.cpp
+cds2/mainFenetre.cpp
+cds2/mainFenetre.h
+cds2/parse.cpp
+cds2/parse.h
+cds2/table.cpp
+cds2/table.h
+cds2/tableau.cpp
+cds2/tableau.h

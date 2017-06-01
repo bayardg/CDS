@@ -1,0 +1,15 @@
+build-cds-Desktop-Debug/moc_fenetre.cpp
+build-cds-Desktop-Debug/moc_themewidget.cpp
+build-cds2-Desktop-Debug/moc_fenetre.cpp
+build-cds2-Desktop-Debug/moc_predefs.h
+cds2/fenetre.cpp
+cds2/fenetre.h
+cds2/main.cpp
+cds2/parse.cpp
+cds2/parse.h
+cds2/table.cpp
+cds2/table.h
+cds2/tableau.cpp
+cds2/tableau.h
+cds2/themewidget.cpp
+cds2/themewidget.h

@@ -1,0 +1,12 @@
+cds2/cds.pro
+cds2/fenetre.cpp
+cds2/fenetre.h
+cds2/main.cpp
+cds2/parse.cpp
+cds2/parse.h
+cds2/table.cpp
+cds2/table.h
+cds2/tableau.cpp
+cds2/tableau.h
+cds2/themewidget.cpp
+cds2/themewidget.h
